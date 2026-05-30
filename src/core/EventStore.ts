@@ -2,6 +2,7 @@ import fs from "fs";
 import { IndexEntry, StoreStats } from "@/types/event";
 import { logger } from "@/utils/logger";
 import readline from "readline";
+import path from "path";
 
 export class EventStore {
   #filePath: string;
@@ -13,6 +14,8 @@ export class EventStore {
     this.#filePath = filePath;
     this.#index = new Map();
     this.#byteCount = 0;
+
+    fs.mkdirSync(path.dirname(this.#filePath), { recursive: true });
   }
 
   recover = async (): Promise<number> => {
