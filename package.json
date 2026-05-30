@@ -4,8 +4,8 @@
   "description": "Append-only event store with an in-memory byte-offset index",
   "main": "dist/server.js",
   "scripts": {
-    "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
-    "build": "tsc",
+    "dev": "ts-node-dev --respawn --transpile-only -r tsconfig-paths/register src/server.ts",
+    "build": "tsc && tsc-alias",
     "start": "node dist/server.js",
     "typecheck": "tsc --noEmit"
   },
@@ -24,6 +24,8 @@
     "@types/express": "^5.0.0",
     "@types/node": "^22.0.0",
     "ts-node-dev": "^2.0.0",
+    "tsc-alias": "^1.8.17",
+    "tsconfig-paths": "^4.2.0",
     "typescript": "^5.6.0"
   }
 }
